@@ -2,6 +2,7 @@ const {app, BrowserWindow} = require('electron')
 const service = require('./proto/chatapi_grpc_pb')
 const chat = require('./proto/chatapi_pb')
 const grpc = require('grpc')
+require('electron-reloader')
 
 function createWindow() {
     // Create the browser window.
@@ -28,6 +29,10 @@ function createWindow() {
     client.send_message(message, function(err, response) {
         console.log('received reply', response);
     });
+
+    try {
+        require('electron-reloader')(module)
+    } catch (_) {}
 }
 
 app.on('ready', createWindow)
