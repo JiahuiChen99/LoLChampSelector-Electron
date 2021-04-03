@@ -1,54 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Electron Chat with gRPC</title>
-  <link rel="stylesheet" href="chat_style.css">
-</head>
-<body>
-  <h1>Welcome to the electron gRPC chat application!</h1>
-  <label for="username">Username:</label>
-  <input id="username" name="username" type="text" placeholder="Your username">
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron Chat with gRPC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="chat.css">
+  </head>
 
-  <button onclick="console.log('this is clicked!');">Start chatting!</button>
+  <body>
+    <div class="chatbot">
 
-  <div class="chatbox">
-    <div class="top-bar">
-      <div class="avatar"><p>V</p></div>
-      <div class="name">Nako</div>
-      <div class="icons">
-        <i class="fas fa-phone"></i>
-        <i class="fas fa-video"></i>
-      </div>
-      <div class="menu">
-        <div class="dots"></div>
-      </div>
+      <section class="section messages">
+        <div class="bubble-user"> Hello, I'm Nako! ✨</div>
+        <div class="bubble-bot"> Hi Nako, I'm LoL Champion Selector Chatbot 😃</div>
+
+      </section>
+
+      <footer class="footer level-item message-box">
+        <input class="input is-info" type="text" placeholder="Text input">
+        <button class="button icon is-medium send_button is-warning">
+          <i class="fa fa-paper-plane"></i>
+        </button>
+      </footer>
     </div>
-    <div class="middle">
-      <div class="voldemort">
-        <div class="incoming">
-          <div class="bubble">Hey, Father's Day is coming up..</div>
-          <div class="bubble">What are you getting.. Oh, oops sorry dude.</div>
-        </div>
-        <div class="outgoing">
-          <div class="bubble lower">Nah, it's cool.</div>
-          <div class="bubble">Well you should get your Dad a cologne. Here smell it. Oh wait! ...</div>
-        </div>
-        <div class="typing">
-          <div class="bubble">
-            <div class="ellipsis one"></div>
-            <div class="ellipsis two"></div>
-            <div class="ellipsis three"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="bottom-bar">
-      <div class="chat">
-        <input type="text" placeholder="Type a message..." />
-        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-      </div>
-    </div>
-  </div>
-</body>
+
+  </body>
 </html>
