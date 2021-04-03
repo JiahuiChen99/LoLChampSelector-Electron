@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_package = "com.lolcampselector.grpc";
+
+service Chatbot {
+
+  // Sends user's text input to the server
+  rpc send_message(Message) returns (Message);
+
+  // Sends a response back to the client side
+  rpc get_message(EmptyMessge) returns (APIResponse);
+
+}
+
+message Message {
+
+  string message = 1;
+
+}
+
+message APIResponse {
+
+  string status_code = 1;
+  int32 code = 2;
+  string data = 3;
+
+}
+
+message EmptyMessge {
+
+}
