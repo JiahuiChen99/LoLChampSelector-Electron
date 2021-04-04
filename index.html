@@ -2,28 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Electron Chat with gRPC</title>
+    <title>LoL Champion Selector</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="chat.css">
+
+    <script src="./chat.js"></script>
   </head>
 
   <body>
     <div class="chatbot">
 
-      <section class="section messages">
-        <div class="bubble-user"> Hello, I'm Nako! ✨</div>
-        <div class="bubble-bot"> Hi Nako, I'm LoL Champion Selector Chatbot 😃</div>
-
+      <section id="messages" class="section messages">
+        <div class="bubble-user block"> Hello, I'm Nako! ✨</div>
+        <div class="bubble-bot block"> Hi Nako, I'm LoL Champion Selector Chatbot 😃</div>
       </section>
 
       <footer class="footer level-item message-box">
-        <input class="input is-info" type="text" placeholder="Text input">
-        <button class="button icon is-medium send_button is-warning">
+        <input id="user-input" class="input is-info" type="text" placeholder="Text input" onkeyup="isEnter()">
+        <button class="button icon is-medium send_button is-warning" onclick="sendMessage()">
           <i class="fa fa-paper-plane"></i>
         </button>
       </footer>
     </div>
-
   </body>
 </html>
