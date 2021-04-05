@@ -28,6 +28,12 @@ app.once('ready', () => {
     win.once('ready-to-show', () => {
         win.show()
     })
+
+    try {
+        require('electron-reloader')(module)
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 /*
