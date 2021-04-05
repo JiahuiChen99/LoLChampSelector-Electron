@@ -91,14 +91,14 @@ function sendMessage() {
             info.appendChild(time);
 
             let new_message = document.createElement("div");
-            new_message.innerText = response.array[0];;
+            new_message.innerText = response.array[0];
             new_message.classList.add("bubble-bot");
 
             chat_bubble.appendChild(info);
             chat_bubble.appendChild(new_message);
 
             let figure = document.createElement("figure");
-            figure.classList.add("image", "is-48x48", "level-right", "user-logo");
+            figure.classList.add("image", "is-48x48", "level-right", "bot-logo");
             let img = document.createElement("img");
             img.src = bot_logo;
             img.classList.add("is-rounded");
