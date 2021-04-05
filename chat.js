@@ -35,7 +35,7 @@ function sendMessage() {
 
         let new_message = document.createElement("div");
         new_message.innerText = user_input;
-        new_message.classList.add("bubble-user", "block");
+        new_message.classList.add("bubble-user");
 
         chat_bubble.appendChild(info);
         chat_bubble.appendChild(new_message);
@@ -50,8 +50,12 @@ function sendMessage() {
         chat_container.appendChild(chat_bubble);
         chat_container.appendChild(figure);
 
+        let wrapper = document.createElement("div");
+        wrapper.classList.add("wrapper");
+        wrapper.appendChild(chat_container);
+
         // Insert new User message
-        message_section.appendChild(chat_container);
+        message_section.appendChild(wrapper);
 
         //Scroll to bottom
         message_section.scrollTop = message_section.scrollHeight;
