@@ -2,17 +2,75 @@
     background: rgba(119, 119, 119, 0.3);
     padding: 8px 13px 9px 13px;
     display: block;
-    max-width: 500px;
-    border-radius: 10px;
+    /*max-width: 500px;*/
+
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
 
 .bubble-user {
     background: rgba(219, 219, 219, 0.3);
     padding: 8px 13px 9px 13px;
     display: block;
-    max-width: 500px;
-    border-radius: 10px;
+    /*max-width: 500px;*/
+
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
 }
+
+
+.chat-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 500px;
+}
+
+.chat-bubble {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-logo {
+    margin-left: 10px;
+}
+
+.bot-logo {
+    margin-right: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.bot {
+    float: left;
+}
+
+.user {
+    float: right;
+}
+
+/*.bubble-bot + .bubble-user{
+    border-bottom-right-radius: 5px;
+}
+
+.bubble-user + .bubble-user {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.bubble-user:last-of-type {
+    border-bottom-right-radius: 30px;
+}*/
 
 /* */
 .chatbot {
