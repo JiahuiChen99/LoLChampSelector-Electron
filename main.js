@@ -8,6 +8,7 @@ app.once('ready', () => {
    win = new BrowserWindow({
        width: 800,
        height: 600,
+       icon: path.join(__dirname, '/assets/lolicon.png'),
        // Don't show the window until it's ready, this prevents any white flickering
        show: false
    });
@@ -15,9 +16,9 @@ app.once('ready', () => {
    win.setMenu(null);
 
     // Open the DevTools.
-    win.webContents.openDevTools({
+    /*win.webContents.openDevTools({
         mode: "detach"
-    });
+    });*/
 
    win.loadURL(url.format({
        pathname: path.join(__dirname, 'index.html'),
