@@ -1,3 +1,10 @@
+body {
+    background-color: rgb(0, 9, 19);
+    color: white;
+    overflow-y: unset;
+    height:100%;
+}
+
 .bubble-bot {
     background: rgba(119, 119, 119, 0.3);
     padding: 8px 13px 9px 13px;
@@ -69,41 +76,18 @@
     float: right;
 }
 
-/*.bubble-bot + .bubble-user{
-    border-bottom-right-radius: 5px;
-}
-
-.bubble-user + .bubble-user {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-
-.bubble-user:last-of-type {
-    border-bottom-right-radius: 30px;
-}*/
-
-/* */
-.chatbot {
-    display: grid;
-}
 
 .messages {
-    background-color: #79C7C5;
     height: 100vh;
     overflow: scroll;
     overflow-x: hidden;
-    padding-bottom: 150px;
-    grid-row: 1;
 }
 
 .message-box {
-    position: absolute;
-    padding: 1%;
-    width: 100%;
-    bottom: 0;
-    background-color: aquamarine;
-
-    grid-row: 2;
+    color: white;
+    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    background: rgba(219, 219, 219, 0.3);
 }
 
 .send_button {

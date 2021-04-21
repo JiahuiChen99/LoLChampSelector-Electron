@@ -16,9 +16,9 @@ app.once('ready', () => {
    win.setMenu(null);
 
     // Open the DevTools.
-    /*win.webContents.openDevTools({
+    win.webContents.openDevTools({
         mode: "detach"
-    });*/
+    });
 
    win.loadURL(url.format({
        pathname: path.join(__dirname, 'index.html'),
@@ -36,27 +36,3 @@ app.once('ready', () => {
         console.log(error)
     }
 });
-
-/*
-function createWindow() {
-    // Create the browser window.
-    let win = new BrowserWindow({
-        width: 800,
-        height: 600,
-    })
-
-    win.removeMenu();
-    // Open the DevTools.
-    win.webContents.openDevTools({
-        mode: "detach"
-    })
-    // and load the index.html of the app.
-    win.loadFile('index.html')
-
-    try {
-        require('electron-reloader')(module)
-    } catch (_) {}
-}
-
-app.on('ready', createWindow)
-*/

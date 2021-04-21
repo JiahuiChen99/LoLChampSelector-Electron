@@ -10,46 +10,80 @@
     <script src="./chat.js"></script>
   </head>
 
-  <body>
-    <div class="chatbot">
+  <body class="columns">
+  <!-- LoL Champion Display Area -->
+    <div class="champion-display column">
+      <div class="container">
+        <img src="https://media.pocketgamer.com/artwork/na-30672-1607090712/league%20of%20legends%20wild%20rift%20ios%20android%20ahri%20full%20body_jpg_640.webp" alt="lol champion image">
+        <div class="row">
+          <div class="columns">
+            <div class="column passive">
+              <img src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/passive/Ahri_SoulEater2.png" alt="champion passive">
+            </div>
+            <div class="column ability-1">
+              <img src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriOrbofDeception.png" alt="champion Q ability">
+            </div>
+            <div class="column ability-2">
+              <img src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriFoxFire.png" alt="champion W ability">
+            </div>
+            <div class="column ability-3">
+              <img src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriSeduce.png" alt="champion E ability">
+            </div>
+            <div class="column ability-4">
+              <img src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriTumble.png" alt="champion R ability">
+            </div>
+          </div>
+        </div>
+        <video src="https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0103/ability_0103_P1.webm" loop autoplay muted>
+          <source src="https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0103/ability_0103_P1.webm" type="video/webm">
+          <source src="https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0103/ability_0103_P1.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
 
-      <section id="messages" class="section messages">
+    <div class="column">
+      <div class="row">
+        <div id="messages" class="messages">
 
-        <div class="wrapper">
-          <div class="chat-container user">
+          <div class="wrapper">
+            <div class="chat-container user">
+              <div class="chat-bubble">
+                <div class="info">
+                  <span> 11:10 </span>
+                  <span class="username"> @Nako</span>
+                </div>
+                <div class="bubble-user">Hello, I'm Nako! ✨</div>
+              </div>
+              <figure class="image is-48x48 level-right user-logo">
+                <img class="is-rounded" src="./assets/ahri_icon.png">
+              </figure>
+            </div>
+          </div>
+
+          <div class="chat-container block bot">
+            <figure class="image is-48x48 level-left bot-logo">
+              <img class="is-rounded" src="./assets/lol.png">
+            </figure>
             <div class="chat-bubble">
               <div class="info">
-                <span> 11:10 </span>
-                <span class="username"> @Nako</span>
+                <span class="username"> @LoL Champion Selector</span>
+                <span> 11:32 </span>
               </div>
-              <div class="bubble-user">Hello, I'm Nako! ✨</div>
+              <div class="bubble-bot block"> Hi Nako, I'm LoL Champion Selector Chatbot 😃</div>
             </div>
-            <figure class="image is-48x48 level-right user-logo">
-              <img class="is-rounded" src="./assets/ahri_icon.png">
-            </figure>
           </div>
-        </div>
 
-        <div class="chat-container block bot">
-          <figure class="image is-48x48 level-left bot-logo">
-            <img class="is-rounded" src="./assets/lol.png">
-          </figure>
-          <div class="chat-bubble">
-            <div class="info">
-              <span class="username"> @LoL Champion Selector</span>
-              <span> 11:32 </span>
-            </div>
-            <div class="bubble-bot block"> Hi Nako, I'm LoL Champion Selector Chatbot 😃</div>
-          </div>
         </div>
-      </section>
+      </div>
+      <div class="row">
+        <div class="level-item">
+          <input id="user-input" class="input is-info  message-box" type="text" placeholder="Text input" onkeyup="isEnter()">
+          <button class="button icon is-medium send_button is-warning" onclick="sendMessage()">
+            <i class="fa fa-paper-plane"></i>
+          </button>
+        </div>
+      </div>
 
-      <footer class="footer level-item message-box">
-        <input id="user-input" class="input is-info" type="text" placeholder="Text input" onkeyup="isEnter()">
-        <button class="button icon is-medium send_button is-warning" onclick="sendMessage()">
-          <i class="fa fa-paper-plane"></i>
-        </button>
-      </footer>
     </div>
   </body>
 </html>
