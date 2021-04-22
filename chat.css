@@ -124,3 +124,8 @@ body {
     border: 1px solid  rgb(183, 149, 83);
     clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
 }
+
+.champion-display {
+    margin: 1%;
+    border: 1px solid  rgb(183, 149, 83);
+}
