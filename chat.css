@@ -90,10 +90,14 @@ body {
     box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     background: rgba(219, 219, 219, 0.3);
+    border-color: #EDB852;
 }
 
 .send_button {
     margin-left: 10px;
+    border-radius: 100px;
+    background-color: #EDB852;
+    border-color: transparent;
 }
 
 /* custom scrollbar */
