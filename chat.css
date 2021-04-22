@@ -119,3 +119,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #a8bbbf;
 }
+
+.ability:hover {
+    border: 1px solid  rgb(183, 149, 83);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+}
