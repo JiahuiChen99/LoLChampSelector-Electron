@@ -134,10 +134,10 @@ body {
 }
 
 .champion-info-box {
-    grid-column: 1;
+    grid-column: 1 / 2;
     grid-row: 1 / 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    margin: 5%;
+    align-self: center;
 }
 
 .champion-splashart {
@@ -145,13 +145,18 @@ body {
 }
 
 .abilities-box {
-    grid-column: 1;
+    grid-column: 1 / 2;
     grid-row: 2 / 3;
+    bottom: 0;
 }
 
 .ability-video {
     max-width: 720px;
     max-height: 480px;
+}
+
+.role-box {
+    margin: 5% 5% 0 0;
 }
 
 .role {
@@ -171,4 +176,5 @@ body {
 .role-icon-border {
     position: relative;
     fill: rgb(183, 149, 83);
+    max-height: 150px;
 }
