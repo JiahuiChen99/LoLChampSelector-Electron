@@ -6,14 +6,13 @@ let win = null;
 
 app.once('ready', () => {
    win = new BrowserWindow({
-       width: 800,
-       height: 600,
        icon: path.join(__dirname, '/assets/lolicon.png'),
        // Don't show the window until it's ready, this prevents any white flickering
        show: false
    });
 
-   win.setMenu(null);
+    win.setMenu(null);
+    win.maximize();
 
     // Open the DevTools.
     win.webContents.openDevTools({
