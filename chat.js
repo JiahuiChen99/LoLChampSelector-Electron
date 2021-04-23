@@ -113,6 +113,9 @@ function sendMessage() {
 
             // Insert new User message
             message_section.appendChild(wrapper);
+
+            //Scroll to bottom
+            message_section.scrollTop = message_section.scrollHeight;
         });
     }
 }
