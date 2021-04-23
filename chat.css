@@ -1,0 +1,180 @@
+body {
+    background-color: rgb(0, 9, 19);
+    color: white;
+    height:100%;
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.bubble-bot {
+    background: rgba(119, 119, 119, 0.3);
+    padding: 8px 13px 9px 13px;
+    display: block;
+    max-width: 400px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.bubble-user {
+    background: rgba(219, 219, 219, 0.3);
+    padding: 8px 13px 9px 13px;
+    display: block;
+    max-width: 400px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    font-size: 1.25em;
+    border-radius: 1rem;
+    box-shadow:	0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+}
+
+.wrapper {
+    width: 100%;
+    height: auto;
+    overflow:auto;
+    padding-bottom: 10px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 500px;
+}
+
+.chat-bubble {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-logo {
+    margin-left: 10px;
+}
+
+.bot-logo {
+    margin-right: 10px;
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.bot {
+    float: left;
+}
+
+.user {
+    float: right;
+}
+
+
+.messages {
+    height: 95vh;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-top: 5%;
+}
+
+.message-box {
+    color: white;
+    box-shadow: 0 0 1rem 0 rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    background: rgba(219, 219, 219, 0.3);
+    border-color: #EDB852;
+}
+
+.send_button {
+    margin-left: 10px;
+    border-radius: 100px;
+    background-color: #EDB852;
+    border-color: transparent;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
+
+.ability:hover {
+    border: 1px solid  rgb(183, 149, 83);
+    clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+}
+
+.champion-display {
+    margin: 1%;
+    border: 1px solid  rgb(183, 149, 83);
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+}
+
+.champion-info-box {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin: 5%;
+    align-self: center;
+}
+
+.champion-splashart {
+
+}
+
+.abilities-box {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    bottom: 0;
+}
+
+.ability-video {
+    max-width: 720px;
+    max-height: 480px;
+}
+
+.role-box {
+    margin: 5% 5% 0 0;
+}
+
+.role {
+    position: relative;
+}
+
+.role-icon {
+    max-width: 74px;
+    max-height: 74px;
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.role-icon-border {
+    position: relative;
+    fill: rgb(183, 149, 83);
+    max-height: 150px;
+}
