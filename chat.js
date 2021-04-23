@@ -129,22 +129,35 @@ function isEnter() {
 
 // Abilities listeners
 
-function abilityClicked(ability_id){
+function abilityClicked(ability_id) {
+    let abilityRequest = new chat.championAbilityRequest();
+    abilityRequest.setChampion("Ahri");
+    abilityRequest.setAbility("Passive");
+
     switch (ability_id) {
         case 0: // Passive
-            getChampionAbility("Champion Name", "Passive");
+            abilityRequest.setAbility("Passive");
             break;
         case 1: // Q
-            getChampionAbility("Champion Name", "Q");
+            abilityRequest.setAbility("Q");
             break;
         case 2: // W
-            getChampionAbility("Champion Name", "W");
+            abilityRequest.setAbility("W");
             break;
         case 3: // E
-            getChampionAbility("Champion Name", "E");
+            abilityRequest.setAbility("E");
             break;
         case 4: // R
-            getChampionAbility("Champion Name", "R");
+            abilityRequest.setAbility("R");
             break;
     }
+
+    console.log("FETCH ABILITY");
+    client.getChampionAbility(abilityRequest, function(err, response) {
+        // TODO: Update video
+
+        console.log(response);
+        let video = document.getElementById("ability-video");
+        video.setAttribute('src', response.array[0]);
+    });
 }
