@@ -125,3 +125,26 @@ function isEnter() {
         sendMessage();
     }
 }
+
+
+// Abilities listeners
+
+function abilityClicked(ability_id){
+    switch (ability_id) {
+        case 0: // Passive
+            getChampionAbility("Champion Name", "Passive");
+            break;
+        case 1: // Q
+            getChampionAbility("Champion Name", "Q");
+            break;
+        case 2: // W
+            getChampionAbility("Champion Name", "W");
+            break;
+        case 3: // E
+            getChampionAbility("Champion Name", "E");
+            break;
+        case 4: // R
+            getChampionAbility("Champion Name", "R");
+            break;
+    }
+}
