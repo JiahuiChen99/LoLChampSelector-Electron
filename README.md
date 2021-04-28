@@ -5,7 +5,7 @@ LoL Champ Selector is a chat bot about the world's most [famous]() eSport game. 
 It also features like champions' description storytelling, items recommendations and much more, give it a try!
 
 <p align="center">
-<img src="" width="150">
+ <img src="https://github.com/JiahuiChen99/LoLChampSelector-Electron/blob/Client_Logic/assets/chatbot%20UI.png" width="auto">
 </p>
  
 ## Architecture
@@ -77,7 +77,7 @@ Run `npm install` to install all dependencies.
 `electron-rebuild` to download core gRPC code and rebuild the library, due to Electron's nature. For more information
 refer to this [site](https://grpc.github.io/grpc/node/).
 
-## TODO
+## TODO ✔️
 ### Front-end
 
 - [x] Chat Interface
