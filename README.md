@@ -1,7 +1,7 @@
 > ⚠️ **Targeted to students of my university - La Salle URL:** Refrain from copying this repository!
 # 🎮 League of Legends Champion Selector 
 
-LoL Champ Selector is a chat bot about the world's most [famous]() eSport game. The baseline is to help **summoner**(users) find a new champion to play with, based on the preferred difficulty.
+LoL Champ Selector is a chat bot about the world's most [famous](https://na.leagueoflegends.com/) eSport game. The baseline is to help **summoner**(users) find a new champion to play with, based on the preferred difficulty.
 It also features like champions' description storytelling, items recommendations and much more, give it a try!
 
 <p align="center">
