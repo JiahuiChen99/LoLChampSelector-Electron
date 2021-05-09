@@ -92,6 +92,9 @@ function sendMessage() {
 
             let new_message = document.createElement("div");
             new_message.innerText = response.array[0];
+            if(response.array[1]) {
+                fetchChampionInformation(response.array[1]);
+            }
             new_message.classList.add("bubble-bot");
 
             chat_bubble.appendChild(info);
@@ -159,5 +162,28 @@ function abilityClicked(ability_id) {
         console.log(response);
         let video = document.getElementById("ability-video");
         video.setAttribute('src', response.array[0]);
+    });
+}
+
+function fetchChampionInformation(champion) {
+    let championInfoRequest = new chat.Message();
+    championInfoRequest.setMessage(champion);
+
+    console.log("Ask champ info");
+    client.getChampionInformation(championInfoRequest, (err, response) => {
+        console.log(response);
+
+        // Change the name
+        document.getElementById("champion-name").innerHTML = response.array[0];
+
+        // Change the title
+        document.getElementById("champion-title").innerHTML = response.array[2];
+
+        // Change the abilities
+
+        // Change the splash art
+
+        // Change the roles
+
     });
 }
