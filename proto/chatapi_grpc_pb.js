@@ -26,6 +26,17 @@ function deserialize_championAbilityRequest(buffer_arg) {
   return chatapi_pb.championAbilityRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_championInformationRequest(arg) {
+  if (!(arg instanceof chatapi_pb.championInformationRequest)) {
+    throw new Error('Expected argument of type championInformationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_championInformationRequest(buffer_arg) {
+  return chatapi_pb.championInformationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_chatbotResponse(arg) {
   if (!(arg instanceof chatapi_pb.chatbotResponse)) {
     throw new Error('Expected argument of type chatbotResponse');
@@ -62,6 +73,18 @@ getChampionAbility: {
     requestDeserialize: deserialize_championAbilityRequest,
     responseSerialize: serialize_Message,
     responseDeserialize: deserialize_Message,
+  },
+  // Request champion's information
+getChampionInformation: {
+    path: '/Chatbot/getChampionInformation',
+    requestStream: false,
+    responseStream: false,
+    requestType: chatapi_pb.Message,
+    responseType: chatapi_pb.championInformationRequest,
+    requestSerialize: serialize_Message,
+    requestDeserialize: deserialize_Message,
+    responseSerialize: serialize_championInformationRequest,
+    responseDeserialize: deserialize_championInformationRequest,
   },
 };
 

@@ -10,27 +10,57 @@ service Chatbot {
   // Request a champion's ability, it returns
   rpc getChampionAbility(championAbilityRequest) returns (Message);
 
+  // Request champion's information
+  rpc getChampionInformation (Message) returns (championInformationRequest);
 }
 
 // Simple message
 message Message {
 
-    string message = 1;
+  string message = 1;
 
 }
 
 // Request a champion's ability
 message championAbilityRequest {
 
-    string champion = 1;
-    string ability = 2;
+  string champion = 1;
+  string ability = 2;
 
 }
+
+// Request champion's information
+// string ability1 = 2;
+// string ability2 = 3;
+// string ability3 = 4;
+// string ability4 = 5;
+// string passive = 6;
+
+message championInformationRequest {
+
+    string champion = 1;
+    map<string, string> abilities = 2;
+    string title = 3;
+    Info info = 4;
+    repeated string tags = 5;
+
+}
+
+// Champion info field
+message Info {
+
+    string attack = 1;
+    string defense = 2;
+    string magic = 3;
+    string difficulty = 4;
+
+}
+
 
 // Chatbot response
 message chatbotResponse {
 
-    string message = 1;
-    string champion = 2;
+  string message = 1;
+  string champion = 2;
 
 }
