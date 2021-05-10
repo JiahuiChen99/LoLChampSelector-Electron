@@ -7,6 +7,7 @@ const client = new service.ChatbotClient('localhost:9090', grpc.credentials.crea
 
 const user_logo = './assets/ahri_icon.png';
 const bot_logo = './assets/lol.png';
+let current_champion;
 
 function sendMessage() {
     let user_input = document.getElementById('user-input').value;
@@ -134,8 +135,9 @@ function isEnter() {
 
 function abilityClicked(ability_id) {
     let abilityRequest = new chat.championAbilityRequest();
-    abilityRequest.setChampion("Ahri");
-    abilityRequest.setAbility("Passive");
+    abilityRequest.setChampion(current_champion.array[0]);
+
+    console.log(current_champion);
 
     switch (ability_id) {
         case 0: // Passive
@@ -155,13 +157,9 @@ function abilityClicked(ability_id) {
             break;
     }
 
-    console.log("FETCH ABILITY");
     client.getChampionAbility(abilityRequest, function(err, response) {
         // TODO: Update video
-
-        console.log(response);
-        let video = document.getElementById("ability-video");
-        video.setAttribute('src', response.array[0]);
+        setAbilityVideo(response.array[0]);
     });
 }
 
@@ -169,21 +167,48 @@ function fetchChampionInformation(champion) {
     let championInfoRequest = new chat.Message();
     championInfoRequest.setMessage(champion);
 
-    console.log("Ask champ info");
     client.getChampionInformation(championInfoRequest, (err, response) => {
-        console.log(response);
+        //console.log(response);
+
+        current_champion = response;
 
         // Change the name
         document.getElementById("champion-name").innerHTML = response.array[0];
 
         // Change the title
-        document.getElementById("champion-title").innerHTML = response.array[2];
+        document.getElementById("champion-title").innerHTML = response.array[3];
+
+        // Change the ability video
+        setAbilityVideo(response.wrappers_[2].map_.q.value);
 
         // Change the abilities
-
+        setAbilities(response.wrappers_[3].map_);
         // Change the splash art
 
         // Change the roles
 
     });
+}
+
+function setAbilities(abilities_photos) {
+    let passive = document.getElementById("passive");
+    passive.setAttribute('src', "https://ddragon.leagueoflegends.com/cdn/11.8.1/img/passive/" + abilities_photos.passive.value);
+
+    let q = document.getElementById("q");
+    q.setAttribute('src', "https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/" + abilities_photos.q.value);
+
+    let w = document.getElementById("w");
+    w.setAttribute('src', "https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/" + abilities_photos.w.value);
+
+    let e = document.getElementById("e");
+    e.setAttribute('src', "https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/" + abilities_photos.e.value);
+
+    let r = document.getElementById("r");
+    r.setAttribute('src', "https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/" + abilities_photos.r.value);
+
+}
+
+function setAbilityVideo(video_link) {
+    let video = document.getElementById("ability-video");
+    video.setAttribute('src', video_link);
 }
