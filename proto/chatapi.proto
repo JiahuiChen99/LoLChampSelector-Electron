@@ -40,9 +40,10 @@ message championInformationRequest {
 
     string champion = 1;
     map<string, string> abilities = 2;
-    string title = 3;
-    Info info = 4;
-    repeated string tags = 5;
+    map<string, string> abilities_icons = 3;
+    string title = 4;
+    Info info = 5;
+    repeated string tags = 6;
 
 }
 

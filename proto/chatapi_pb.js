@@ -421,7 +421,7 @@ proto.championAbilityRequest.prototype.setAbility = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.championInformationRequest.repeatedFields_ = [5];
+proto.championInformationRequest.repeatedFields_ = [6];
 
 
 
@@ -456,9 +456,10 @@ proto.championInformationRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     champion: jspb.Message.getFieldWithDefault(msg, 1, ""),
     abilitiesMap: (f = msg.getAbilitiesMap()) ? f.toObject(includeInstance, undefined) : [],
-    title: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    abilitiesIconsMap: (f = msg.getAbilitiesIconsMap()) ? f.toObject(includeInstance, undefined) : [],
+    title: jspb.Message.getFieldWithDefault(msg, 4, ""),
     info: (f = msg.getInfo()) && proto.Info.toObject(includeInstance, f),
-    tagsList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f
+    tagsList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -506,15 +507,21 @@ proto.championInformationRequest.deserializeBinaryFromReader = function(msg, rea
          });
       break;
     case 3:
+      var value = msg.getAbilitiesIconsMap();
+      reader.readMessage(value, function(message, reader) {
+        jspb.Map.deserializeBinary(message, reader, jspb.BinaryReader.prototype.readString, jspb.BinaryReader.prototype.readString, null, "", "");
+         });
+      break;
+    case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setTitle(value);
       break;
-    case 4:
+    case 5:
       var value = new proto.Info;
       reader.readMessage(value,proto.Info.deserializeBinaryFromReader);
       msg.setInfo(value);
       break;
-    case 5:
+    case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.addTags(value);
       break;
@@ -558,17 +565,21 @@ proto.championInformationRequest.serializeBinaryToWriter = function(message, wri
   if (f && f.getLength() > 0) {
     f.serializeBinary(2, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
   }
+  f = message.getAbilitiesIconsMap(true);
+  if (f && f.getLength() > 0) {
+    f.serializeBinary(3, writer, jspb.BinaryWriter.prototype.writeString, jspb.BinaryWriter.prototype.writeString);
+  }
   f = message.getTitle();
   if (f.length > 0) {
     writer.writeString(
-      3,
+      4,
       f
     );
   }
   f = message.getInfo();
   if (f != null) {
     writer.writeMessage(
-      4,
+      5,
       f,
       proto.Info.serializeBinaryToWriter
     );
@@ -576,7 +587,7 @@ proto.championInformationRequest.serializeBinaryToWriter = function(message, wri
   f = message.getTagsList();
   if (f.length > 0) {
     writer.writeRepeatedString(
-      5,
+      6,
       f
     );
   }
@@ -624,11 +635,33 @@ proto.championInformationRequest.prototype.clearAbilitiesMap = function() {
 
 
 /**
- * optional string title = 3;
+ * map<string, string> abilities_icons = 3;
+ * @param {boolean=} opt_noLazyCreate Do not create the map if
+ * empty, instead returning `undefined`
+ * @return {!jspb.Map<string,string>}
+ */
+proto.championInformationRequest.prototype.getAbilitiesIconsMap = function(opt_noLazyCreate) {
+  return /** @type {!jspb.Map<string,string>} */ (
+      jspb.Message.getMapField(this, 3, opt_noLazyCreate,
+      null));
+};
+
+
+/**
+ * Clears values from the map. The map will be non-null.
+ * @return {!proto.championInformationRequest} returns this
+ */
+proto.championInformationRequest.prototype.clearAbilitiesIconsMap = function() {
+  this.getAbilitiesIconsMap().clear();
+  return this;};
+
+
+/**
+ * optional string title = 4;
  * @return {string}
  */
 proto.championInformationRequest.prototype.getTitle = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
@@ -637,17 +670,17 @@ proto.championInformationRequest.prototype.getTitle = function() {
  * @return {!proto.championInformationRequest} returns this
  */
 proto.championInformationRequest.prototype.setTitle = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional Info info = 4;
+ * optional Info info = 5;
  * @return {?proto.Info}
  */
 proto.championInformationRequest.prototype.getInfo = function() {
   return /** @type{?proto.Info} */ (
-    jspb.Message.getWrapperField(this, proto.Info, 4));
+    jspb.Message.getWrapperField(this, proto.Info, 5));
 };
 
 
@@ -656,7 +689,7 @@ proto.championInformationRequest.prototype.getInfo = function() {
  * @return {!proto.championInformationRequest} returns this
 */
 proto.championInformationRequest.prototype.setInfo = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 5, value);
 };
 
 
@@ -674,16 +707,16 @@ proto.championInformationRequest.prototype.clearInfo = function() {
  * @return {boolean}
  */
 proto.championInformationRequest.prototype.hasInfo = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
 /**
- * repeated string tags = 5;
+ * repeated string tags = 6;
  * @return {!Array<string>}
  */
 proto.championInformationRequest.prototype.getTagsList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 5));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 6));
 };
 
 
@@ -692,7 +725,7 @@ proto.championInformationRequest.prototype.getTagsList = function() {
  * @return {!proto.championInformationRequest} returns this
  */
 proto.championInformationRequest.prototype.setTagsList = function(value) {
-  return jspb.Message.setField(this, 5, value || []);
+  return jspb.Message.setField(this, 6, value || []);
 };
 
 
@@ -702,7 +735,7 @@ proto.championInformationRequest.prototype.setTagsList = function(value) {
  * @return {!proto.championInformationRequest} returns this
  */
 proto.championInformationRequest.prototype.addTags = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 6, value, opt_index);
 };
 
 
