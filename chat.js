@@ -11,6 +11,18 @@ let current_champion;
 let skins;
 let current_splash = 0;
 
+const role_border = "<path d=\"M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z\"></path><path d=\"M55.44 5.44L50 10.88l-5.44-5.44L50 0z\"></path>";
+
+// Roles hashmap
+const roles_map = {
+    'Marksman' : 'https://static.wikia.nocookie.net/leagueoflegends/images/7/7f/Marksman_icon.png/revision/latest?cb=20181117143555',
+    'Support' : 'https://static.wikia.nocookie.net/leagueoflegends/images/5/58/Controller_icon.png/revision/latest?cb=20181117143552',
+    'Assassin' : 'https://static.wikia.nocookie.net/leagueoflegends/images/2/28/Slayer_icon.png/revision/latest?cb=20181117143556',
+    'Mage' : 'https://static.wikia.nocookie.net/leagueoflegends/images/2/28/Mage_icon.png/revision/latest?cb=20181117143555',
+    'Fighter' : 'https://static.wikia.nocookie.net/leagueoflegends/images/8/8f/Fighter_icon.png/revision/latest?cb=20181117143554',
+    'Tank' : 'https://static.wikia.nocookie.net/leagueoflegends/images/5/5a/Tank_icon.png/revision/latest?cb=20181117143558',
+}
+
 function sendMessage() {
     let user_input = document.getElementById('user-input').value;
 
@@ -180,18 +192,47 @@ function fetchChampionInformation(champion) {
         // Change the title
         document.getElementById("champion-title").innerHTML = response.array[3];
 
+        console.log(response)
         // Change the ability video
         setAbilityVideo(response.wrappers_[2].map_.q.value);
 
         // Change the abilities
         setAbilities(response.wrappers_[3].map_);
+
         // Change the splash art
         skins = response.array[4];
-
         skins.push("0");
         setSplashArt(skins[skins.length - 1]);
         // Change the roles
+        setRoles(response.array[5]);
+    });
+}
 
+function setRoles(roles) {
+    let role_box = document.getElementById("role-box");
+
+    role_box.innerHTML = "";
+
+    roles.forEach( role => {
+        let column_role = document.createElement("div");
+        column_role.classList.add("column", "role");
+
+
+        //let svg = document.createElement("svg");
+        let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", "0 0 100 100");
+        svg.classList.add("role-icon-border");
+        svg.innerHTML = role_border;
+
+        column_role.appendChild(svg);
+
+        let img = document.createElement("img");
+        img.src = roles_map[role];
+        img.classList.add("role-icon");
+
+        column_role.appendChild(img);
+
+        role_box.appendChild(column_role);
     });
 }
 
