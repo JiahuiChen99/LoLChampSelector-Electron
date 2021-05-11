@@ -46,35 +46,10 @@
     }
 }
 
-/*Select every element*/
-[id^="item"] {
-    display: none;
-}
 
-.item-1 {
+.carousel-item {
     z-index: 2;
     opacity: 1;
     background:url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg');
     background-size:cover;
-}
-.item-2{
-    background:url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_14.jpg');
-    background-size:cover;
-}
-.item-3{
-    background:url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_27.jpg');
-    background-size:cover;
-}
-
-*:target ~ .item-1 {
-    opacity: 0;
-}
-
-#item-1:target ~ .item-1 {
-    opacity: 1;
-}
-
-#item-2:target ~ .item-2, #item-3:target ~ .item-3 {
-    z-index: 3;
-    opacity: 1;
 }

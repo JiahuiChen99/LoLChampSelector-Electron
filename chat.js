@@ -8,6 +8,8 @@ const client = new service.ChatbotClient('localhost:9090', grpc.credentials.crea
 const user_logo = './assets/ahri_icon.png';
 const bot_logo = './assets/lol.png';
 let current_champion;
+let skins;
+let current_splash = 0;
 
 function sendMessage() {
     let user_input = document.getElementById('user-input').value;
@@ -184,11 +186,34 @@ function fetchChampionInformation(champion) {
         // Change the abilities
         setAbilities(response.wrappers_[3].map_);
         // Change the splash art
+        skins = response.array[4];
 
+        skins.push("0");
+        setSplashArt(skins[skins.length - 1]);
         // Change the roles
 
     });
 }
+
+function setSplashArt(skin) {
+    let carousel = document.getElementById("carousel");
+
+    carousel.style.backgroundImage = "url('http://ddragon.leagueoflegends.com/cdn/img/champion/splash/" + current_champion.array[0] + "_" + skin + ".jpg')";
+}
+
+function changeSplashArt(left_right) {
+    setSplashArt(skins[current_splash]);
+    if ( left_right ) {
+        if (++current_splash >= skins.length) {
+            current_splash = 0;
+        }
+    } else {
+        if (--current_splash < 0) {
+            current_splash = skins.length - 1;
+        }
+    }
+}
+
 
 function setAbilities(abilities_photos) {
     let passive = document.getElementById("passive");
