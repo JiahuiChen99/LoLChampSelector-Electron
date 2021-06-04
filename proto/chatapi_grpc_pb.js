@@ -4,28 +4,6 @@
 var grpc = require('grpc');
 var chatapi_pb = require('./chatapi_pb.js');
 
-function serialize_APIResponse(arg) {
-  if (!(arg instanceof chatapi_pb.APIResponse)) {
-    throw new Error('Expected argument of type APIResponse');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_APIResponse(buffer_arg) {
-  return chatapi_pb.APIResponse.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_EmptyMessge(arg) {
-  if (!(arg instanceof chatapi_pb.EmptyMessge)) {
-    throw new Error('Expected argument of type EmptyMessge');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_EmptyMessge(buffer_arg) {
-  return chatapi_pb.EmptyMessge.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_Message(arg) {
   if (!(arg instanceof chatapi_pb.Message)) {
     throw new Error('Expected argument of type Message');
@@ -37,6 +15,39 @@ function deserialize_Message(buffer_arg) {
   return chatapi_pb.Message.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_championAbilityRequest(arg) {
+  if (!(arg instanceof chatapi_pb.championAbilityRequest)) {
+    throw new Error('Expected argument of type championAbilityRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_championAbilityRequest(buffer_arg) {
+  return chatapi_pb.championAbilityRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_championInformationRequest(arg) {
+  if (!(arg instanceof chatapi_pb.championInformationRequest)) {
+    throw new Error('Expected argument of type championInformationRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_championInformationRequest(buffer_arg) {
+  return chatapi_pb.championInformationRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_chatbotResponse(arg) {
+  if (!(arg instanceof chatapi_pb.chatbotResponse)) {
+    throw new Error('Expected argument of type chatbotResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_chatbotResponse(buffer_arg) {
+  return chatapi_pb.chatbotResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 
 var ChatbotService = exports.ChatbotService = {
   // Sends user's text input to the server
@@ -45,23 +56,35 @@ send_message: {
     requestStream: false,
     responseStream: false,
     requestType: chatapi_pb.Message,
-    responseType: chatapi_pb.Message,
+    responseType: chatapi_pb.chatbotResponse,
     requestSerialize: serialize_Message,
     requestDeserialize: deserialize_Message,
+    responseSerialize: serialize_chatbotResponse,
+    responseDeserialize: deserialize_chatbotResponse,
+  },
+  // Request a champion's ability, it returns
+getChampionAbility: {
+    path: '/Chatbot/getChampionAbility',
+    requestStream: false,
+    responseStream: false,
+    requestType: chatapi_pb.championAbilityRequest,
+    responseType: chatapi_pb.Message,
+    requestSerialize: serialize_championAbilityRequest,
+    requestDeserialize: deserialize_championAbilityRequest,
     responseSerialize: serialize_Message,
     responseDeserialize: deserialize_Message,
   },
-  // Sends a response back to the client side
-get_message: {
-    path: '/Chatbot/get_message',
+  // Request champion's information
+getChampionInformation: {
+    path: '/Chatbot/getChampionInformation',
     requestStream: false,
     responseStream: false,
-    requestType: chatapi_pb.EmptyMessge,
-    responseType: chatapi_pb.APIResponse,
-    requestSerialize: serialize_EmptyMessge,
-    requestDeserialize: deserialize_EmptyMessge,
-    responseSerialize: serialize_APIResponse,
-    responseDeserialize: deserialize_APIResponse,
+    requestType: chatapi_pb.Message,
+    responseType: chatapi_pb.championInformationRequest,
+    requestSerialize: serialize_Message,
+    requestDeserialize: deserialize_Message,
+    responseSerialize: serialize_championInformationRequest,
+    responseDeserialize: deserialize_championInformationRequest,
   },
 };
 
