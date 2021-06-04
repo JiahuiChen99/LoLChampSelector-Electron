@@ -1,0 +1,55 @@
+.carousel-wrapper{
+    height: 100%;
+    width: 100%;
+    position:relative;
+    margin:0 auto;
+}
+.carousel-item{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:25px 50px;
+    opacity:0;
+    transition: all 0.5s ease-in-out;
+}
+.arrow{
+    border: solid rgb(183, 149, 83);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 12px;
+}
+
+.arrow-prev{
+    left: -30px;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%) rotate(135deg);
+}
+
+.arrow-next{
+    right: -30px;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%) rotate(-45deg);
+}
+
+.light{
+    color:white;
+}
+
+@media (max-width: 480px) {
+    .arrow, .light .arrow {
+        background-size: 10px;
+        background-position: 10px 50%;
+    }
+}
+
+
+.carousel-item {
+    z-index: 2;
+    opacity: 1;
+    background:url('https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_0.jpg');
+    background-size:cover;
+}

@@ -5,27 +5,63 @@ option java_package = "com.lolcampselector.grpc";
 service Chatbot {
 
   // Sends user's text input to the server
-  rpc send_message(Message) returns (Message);
+  rpc send_message(Message) returns (chatbotResponse);
 
-  // Sends a response back to the client side
-  rpc get_message(EmptyMessge) returns (APIResponse);
+  // Request a champion's ability, it returns
+  rpc getChampionAbility(championAbilityRequest) returns (Message);
 
+  // Request champion's information
+  rpc getChampionInformation (Message) returns (championInformationRequest);
 }
 
+// Simple message
 message Message {
 
   string message = 1;
 
 }
 
-message APIResponse {
+// Request a champion's ability
+message championAbilityRequest {
 
-  string status_code = 1;
-  int32 code = 2;
-  string data = 3;
+  string champion = 1;
+  string ability = 2;
 
 }
 
-message EmptyMessge {
+// Request champion's information
+// string ability1 = 2;
+// string ability2 = 3;
+// string ability3 = 4;
+// string ability4 = 5;
+// string passive = 6;
+
+message championInformationRequest {
+
+    string champion = 1;
+    map<string, string> abilities = 2;
+    map<string, string> abilities_icons = 3;
+    string title = 4;
+    Info info = 5;
+    repeated string tags = 6;
+
+}
+
+// Champion info field
+message Info {
+
+    string attack = 1;
+    string defense = 2;
+    string magic = 3;
+    string difficulty = 4;
+
+}
+
+
+// Chatbot response
+message chatbotResponse {
+
+  string message = 1;
+  string champion = 2;
 
 }

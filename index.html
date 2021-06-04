@@ -1,54 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Electron Chat with gRPC</title>
-  <link rel="stylesheet" href="chat_style.css">
-</head>
-<body>
-  <h1>Welcome to the electron gRPC chat application!</h1>
-  <label for="username">Username:</label>
-  <input id="username" name="username" type="text" placeholder="Your username">
+  <head>
+    <meta charset="UTF-8">
+    <title>LoL Champion Selector</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="carousel.css">
 
-  <button onclick="console.log('this is clicked!');">Start chatting!</button>
+    <script src="./chat.js"></script>
+  </head>
 
-  <div class="chatbox">
-    <div class="top-bar">
-      <div class="avatar"><p>V</p></div>
-      <div class="name">Nako</div>
-      <div class="icons">
-        <i class="fas fa-phone"></i>
-        <i class="fas fa-video"></i>
-      </div>
-      <div class="menu">
-        <div class="dots"></div>
-      </div>
-    </div>
-    <div class="middle">
-      <div class="voldemort">
-        <div class="incoming">
-          <div class="bubble">Hey, Father's Day is coming up..</div>
-          <div class="bubble">What are you getting.. Oh, oops sorry dude.</div>
+  <body class="columns">
+  <!-- LoL Champion Display Area -->
+    <div class="container champion-display column">
+
+      <div class=" is-full is-half champion-info-box">
+        <div class="columns">
+          <div class="column">
+            <div class="is-size-2 is-centered has-text-weight-bold" id="champion-name"> Ahri </div>
+            <div class="has-text-weight-light is-size-5" id="champion-title"> The nine - tailed fox </div>
+            <div class="columns role-box" id="role-box">
+              <div class="column role">
+                <svg class="role-icon-border" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                <img class="role-icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/28/Mage_icon.png/revision/latest?cb=20181117143555">
+              </div>
+              <div class="column role">
+                <svg class="role-icon-border" viewBox="0 0 100 100"><path d="M59.84 7.78L50 17.63l-4.43-4.43-5.41-5.42a46.63 46.63 0 1019.68 0zm-12 12L50 22l2.2-2.19 4.67-4.67a38.86 38.86 0 11-13.74 0zM50 96.89a43.52 43.52 0 01-10.82-85.68l2.59 2.59a40.42 40.42 0 1016.46 0l2.59-2.59A43.52 43.52 0 0150 96.89z"></path><path d="M55.44 5.44L50 10.88l-5.44-5.44L50 0z"></path></svg>
+                <img class="role-icon" src="https://static.wikia.nocookie.net/leagueoflegends/images/2/28/Slayer_icon.png/revision/latest?cb=20181117143556">
+              </div>
+            </div>
+          </div>
+          <div class="column is-three-fifths">
+            <div class="carousel-wrapper">
+              <div class="carousel-item" id="carousel">
+                <a class="arrow arrow-prev" onclick="changeSplashArt(0)"></a>
+                <a class="arrow arrow-next" onclick="changeSplashArt(1)"></a>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="outgoing">
-          <div class="bubble lower">Nah, it's cool.</div>
-          <div class="bubble">Well you should get your Dad a cologne. Here smell it. Oh wait! ...</div>
-        </div>
-        <div class="typing">
-          <div class="bubble">
-            <div class="ellipsis one"></div>
-            <div class="ellipsis two"></div>
-            <div class="ellipsis three"></div>
+      </div>
+
+      <div class="abilities-box">
+        <div class="columns is-vcentered is-centered">
+          <div class="column has-text-centered">
+            <div class="row block">
+              <figure class="row image is-64x64 is-inline-block">
+                <img id="passive" onclick="abilityClicked(0)" class="ability" src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/passive/Ahri_SoulEater2.png" alt="champion passive">
+              </figure>
+            </div>
+            <div class="row block">
+              <figure class="row image is-64x64 is-inline-block">
+                <img id="q" onclick="abilityClicked(1)" class="ability" src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriOrbofDeception.png" alt="champion Q ability">
+              </figure>
+            </div>
+            <div class="row block">
+              <figure class="row image is-64x64 is-inline-block">
+                <img id="w" onclick="abilityClicked(2)" class="ability" src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriFoxFire.png" alt="champion W ability">
+              </figure>
+            </div>
+            <div class="row block">
+              <figure class="row image is-64x64 is-inline-block">
+                <img id="e" onclick="abilityClicked(3)" class="ability" src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriSeduce.png" alt="champion E ability">
+              </figure>
+            </div>
+            <div class="row block">
+              <figure class="row image is-64x64 is-inline-block">
+                <img id="r" onclick="abilityClicked(4)" class="ability" src="https://ddragon.leagueoflegends.com/cdn/11.8.1/img/spell/AhriTumble.png" alt="champion R ability">
+              </figure>
+            </div>
+          </div>
+
+          <div class="column is-10 ability-video">
+            <video id="ability-video" src="https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0103/ability_0103_P1.webm" loop autoplay muted>
+            </video>
           </div>
         </div>
       </div>
     </div>
-    <div class="bottom-bar">
-      <div class="chat">
-        <input type="text" placeholder="Type a message..." />
-        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+
+    <div class="column">
+      <div class="row">
+        <div id="messages" class="messages">
+
+          <div class="wrapper">
+            <div class="chat-container user">
+              <div class="chat-bubble">
+                <div class="info">
+                  <span> 11:10 </span>
+                  <span class="username"> @Nako</span>
+                </div>
+                <div class="bubble-user">Hello, I'm Nako! ✨</div>
+              </div>
+              <figure class="image is-48x48 level-right user-logo">
+                <img class="is-rounded" src="./assets/ahri_icon.png">
+              </figure>
+            </div>
+          </div>
+
+          <div class="chat-container block bot">
+            <figure class="image is-48x48 level-left bot-logo">
+              <img class="is-rounded" src="./assets/lol.png">
+            </figure>
+            <div class="chat-bubble">
+              <div class="info">
+                <span class="username"> @LoL Champion Selector</span>
+                <span> 11:32 </span>
+              </div>
+              <div class="bubble-bot block"> Hi Nako, I'm LoL Champion Selector Chatbot 😃</div>
+            </div>
+          </div>
+
+        </div>
       </div>
+      <div class="row">
+        <div class="level-item">
+          <input id="user-input" class="input message-box has-icons-right" type="text" placeholder="Text input" onkeyup="isEnter()">
+          <a class="button send_button" onclick="sendMessage()">
+            <span class="icon is-small">
+              <i class="fa fa-paper-plane"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+
     </div>
-  </div>
-</body>
+  </body>
 </html>
